@@ -1,14 +1,18 @@
-Summary: 
+**Summary:**
 
-If you have a bowden machine with a .4mm nozzle, include everything from pa_tuner.cfg into your printer.cfg, run the command PA_TUNER, and watch the printer output (before or after the print takes place) for the correct forumla to calculate your pressure advance value with default arguments by measuring the best quality Z height on the resulting printed test square.  Removes the need to run a Pressure Advance tuning tower command, and other tedious nonsense associated with other Pressure Advance calibration methods.
+PA_TUNER is a tool to help configure Klipper's [pressure advance setting](https://www.klipper3d.org/Pressure_Advance.html) in a few simple steps. It removes the need to run a pressure advance tuning tower command and other processes associated with the process. Review and messure the printed test square and use the calculation in the terminal to add the correct PA value to Klipper's printer.cfg file.
 
-Details:
+**Details:**
 
 PA_TUNER is a Klipper gcode macro to quickly calculate correct Pressure Advance through direct observation of a quick-to-print 1-wall test square.  Running PA_TUNER with no adjustment to the default parameters will suffice for most people with bowden tube extrusion.
 
 A measurement is taken of the best quality Z height, and then used in the Pressure Advance formula. The forumla to calculate the Pressure Advance value is dynamically generated from the parameters, and printed as gcode output both before and after the print itself.  If you're not monitoring the output from your printer, you will miss it.  
 
-Add everything from pa_tuner.cfg to your printer.cfg, or just include it with the directive.  Parameters are visible via the HELP command
+**Installation:**
+
+Save _pa_tuner.cfg_ in the same folder as _printer.cfg_. Next add the following line in the begining of the _printer.cfg_ file.
+
+[include pa_tuner.cfg]
 
 For most people, the only parameters they will ever adjust are PA_MAX and PA_MIN, to either zero in on the precise value, or to account for a direct drive system. The default PA_MAX is 1.0 because pressure advance is of the most benefit to bowden systems, so when this macro is used on direct drive systems, it is recommended to start with a PA_MAX value of 0.25, or even lower.  
 
